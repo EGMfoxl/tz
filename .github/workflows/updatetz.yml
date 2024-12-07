@@ -35,14 +35,14 @@ jobs:
         git push
 
   cleanup-runs:
-    needs: update-worker
     runs-on: ubuntu-latest
-
+    permissions:
+      actions: write
+      contents: read
     steps:
-    # 使用 delete-workflow-runs 删除历史记录
-    - name: Delete previous workflow runs
-      uses: trevorblades/delete-workflow-runs@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        repository: EGMfoxl/tz
-        retain_days: 0 # 删除所有已完成记录
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 0
