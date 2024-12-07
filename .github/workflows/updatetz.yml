@@ -34,11 +34,11 @@ jobs:
         git commit -m "Update _worker.js and wrangler.toml (auto)" || echo "No changes to commit."
         git push --force
 
-  cleanup-runs:
+  del_runs:
     runs-on: ubuntu-latest
     permissions:
-      actions: write  # 必须为写权限才能删除工作流运行
-      contents: read  # 仓库读取权限
+      actions: write
+      contents: read
     steps:
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
