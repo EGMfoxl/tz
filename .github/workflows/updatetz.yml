@@ -19,9 +19,14 @@ jobs:
       run: |
         curl -o _worker.js https://raw.githubusercontent.com/yonggekkk/Cloudflare_vless_trojan/main/Vless_workers_pages/_worker.js
 
-    # 部署到 Cloudflare Workers
-    - name: Deploy to Cloudflare
-      run: npx wrangler deploy _worker.js
+    # 提交并推送到仓库
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add _worker.js
+        git commit -m "Update _worker.js (auto)"
+        git push
 
     # 删除历史记录
     - name: Cleanup previous workflow runs
