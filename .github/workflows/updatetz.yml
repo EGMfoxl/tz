@@ -17,7 +17,7 @@ jobs:
     # 拉取目标文件
     - name: Fetch latest worker.js
       run: |
-        curl -O _worker.js https://github.com/yonggekkk/Cloudflare_vless_trojan/blob/main/Vless_workers_pages/_worker.js
+        curl -O https://github.com/yonggekkk/Cloudflare_vless_trojan/blob/main/Vless_workers_pages/_worker.js
 
     # 提交并推送更新
     - name: Commit and push changes
