@@ -31,14 +31,14 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add _worker.js wrangler.toml
-        git commit -m "Update _worker.js and wrangler.toml (auto)"
-        git push
+        git commit -m "Update _worker.js and wrangler.toml (auto)" || echo "No changes to commit."
+        git push --force
 
   cleanup-runs:
     runs-on: ubuntu-latest
     permissions:
-      actions: write
-      contents: read
+      actions: write  # 必须为写权限才能删除工作流运行
+      contents: read  # 仓库读取权限
     steps:
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
