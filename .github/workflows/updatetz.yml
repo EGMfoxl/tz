@@ -44,4 +44,5 @@ jobs:
       uses: trevorblades/delete-workflow-runs@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        repository: EGMfoxl/tz
         retain_days: 0 # 删除所有已完成记录
