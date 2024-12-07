@@ -1,0 +1,2 @@
+name = "tzz"
+main = "_worker.js" # 指定入口文件
