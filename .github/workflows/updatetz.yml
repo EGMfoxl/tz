@@ -28,15 +28,14 @@ jobs:
         git commit -m "Update _worker.js (auto)"
         git push
 
-    # 删除历史记录
-    - name: Cleanup previous workflow runs
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        gh auth login --with-token <<< "${GH_TOKEN}"
-        # 获取当前工作流的 ID
-        WORKFLOW_ID=$(gh workflow list --json id,name | jq -r '.[] | select(.name == "Update Worker.js") | .id')
-        # 删除所有之前的运行记录，保留当前运行
-        gh run list --workflow "$WORKFLOW_ID" --json databaseId,status | \
-        jq -r '.[] | select(.status == "completed") | .databaseId' | \
-        xargs -I {} gh run delete {} --confirm
+  cleanup-runs:
+    needs: update-worker
+    runs-on: ubuntu-latest
+
+    steps:
+    # 使用 delete-workflow-runs 删除历史记录
+    - name: Delete previous workflow runs
+      uses: trevorblades/delete-workflow-runs@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        retain_days: 0 # 删除所有已完成记录
