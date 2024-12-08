@@ -30,7 +30,7 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add _worker.js wrangler.toml
+        git add tz.js wrangler.toml
         git commit -m "Update _worker.js and wrangler.toml (auto)" || echo "No changes to commit."
         git push --force
 
