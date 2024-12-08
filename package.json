@@ -1,0 +1,12 @@
+
+{
+  "name": "tz",
+  "version": "1.0",
+  "author": {
+    "name": "EGMfoxl"
+  },
+  "devDependencies": {
+    "wrangler": "latest",
+    "javascript-obfuscator": "latest"
+  }
+}
