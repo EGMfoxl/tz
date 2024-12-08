@@ -7,6 +7,8 @@
   },
   "devDependencies": {
     "wrangler": "latest",
-    "javascript-obfuscator": "latest"
+    "javascript-obfuscator": "latest",
+    "rollup-plugin-inject": "latest",
+    "sourcemap-codec": "latest"
   }
 }
